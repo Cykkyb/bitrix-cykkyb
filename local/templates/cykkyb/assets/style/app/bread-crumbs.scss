@@ -1,0 +1,21 @@
+.bread-crumbs {
+    width: 100vw;
+    height: 30px;
+    background-color: #0f0f0f;
+
+    &__container {
+        gap: 10px;
+        display: flex;
+        align-items: center;
+        color: white;
+
+        a:hover {
+            color: wheat;
+            transition: color 0.3s ease;
+        }
+
+        i {
+            font-size: 12px;
+        }
+    }
+}

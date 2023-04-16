@@ -1,0 +1,7 @@
+<?
+$sSectionName = "Понравилось";
+$arDirProperties = Array(
+
+);
+
+?>

@@ -1,0 +1,72 @@
+.modal-product-card {
+    overflow: hidden;
+
+    @media (max-width: 568px) {
+        padding: 40px 20px;
+    }
+
+    &__wrapper {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 60px;
+        font-size: 20px;
+    }
+
+    &__label {
+        font-weight: 500;
+    }
+
+    &__image {
+
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+    }
+
+    &__table-container {
+        width: 100%;
+        align-self: flex-start;
+    }
+
+    &__table {
+        border-collapse: collapse;
+        width: 100%;
+        text-align: center;
+        overflow-x: auto;
+
+        th, td {
+            border: 1px solid grey;
+            height: 50px;
+            min-width: 63px;
+
+        }
+
+        th {
+            font-size: 24px;
+            font-weight: 700;
+
+        }
+
+        td {
+            color: #6F6F6F;
+        }
+
+        td:first-child {
+            font-weight: 700;
+        }
+
+    }
+
+    &__button {
+        text-transform: uppercase;
+        background-color: black;
+        cursor: pointer;
+        color: white;
+        height: 67px;
+        width: 100%;
+
+    }
+}
