@@ -12,18 +12,27 @@ class myCatalogSectionList extends CBitrixComponent
 
     protected function getResult()
     {
-        $arSelect = ["ID", "IBLOCK_ID", 'CODE', "NAME", 'IBLOCK_SECTION_ID',];
-        $arFilter = [
-            "IBLOCK_ID" => $this->arParams['IBLOCK_ID'],
-            "ACTIVE_DATE" => "Y",
-            "ACTIVE" => "Y"];
-        $res = CIBlockSection::GetList([], $arFilter, false, $arSelect);
+        $res = \Bitrix\Iblock\SectionTable::GetList([
+            'select' => ["ID", "IBLOCK_ID", 'CODE', "NAME", 'BREND' => 'UF_PROPERTY.UF_BREND', 'CATEGORU' => 'UF_PROPERTY.UF_CATEGORY'],
+            'filter' => [
+                "IBLOCK_ID" => $this->arParams['IBLOCK_ID'],
+                "ACTIVE" => "Y"
+            ],
+            'runtime' => [
+                'UF_PROPERTY' => [
+                    'data_type' => \Bitrix\Iblock\Model\Section::compileEntityByIblock($this->arParams['IBLOCK_ID']),
+                    'reference' => ['this.ID' => 'ref.ID'],
+                    'join_type' => 'LEFT'
+                ],
+            ],
+        ]);
 
         $arResult = [];
 
         while ($element = $res->fetch()) {
             $arResult[] = $element;
         }
+
         $this->arResult['ITEMS'] = $arResult;
         $this->includeComponentTemplate();
     }

@@ -12,7 +12,7 @@ class myCatalogList extends CBitrixComponent
         $elementClass = Bitrix\Iblock\Iblock::wakeUp($this->arParams['IBLOCK_ID'])->getEntityDataClass();
 
         $res = $elementClass::getList([
-                'select' => ['*', 'ID', 'IBLOCK_ID', 'CODE', "NAME", 'PREVIEW_PICTURE', 'PRICE' => 'PRICE_INFO.PRICE', 'CURRENCY' => 'PRICE_INFO.CURRENCY'],
+                'select' => [ 'ID', 'IBLOCK_ID', 'CODE', "NAME", 'PREVIEW_PICTURE', 'PRICE' => 'PRICE_INFO.PRICE', 'CURRENCY' => 'PRICE_INFO.CURRENCY'],
                 'filter' => [
                     'SECTIONS.ID' => $this->arParams['SECTION_ID']
                 ],
@@ -21,7 +21,8 @@ class myCatalogList extends CBitrixComponent
                         'data_type' => \Bitrix\Catalog\PriceTable::class,
                         'reference' => ['this.ID' => 'ref.PRODUCT_ID'],
                         'join_type' => 'LEFT'
-                    ]
+                    ],
+
                 ],
             ]
         );
@@ -32,6 +33,15 @@ class myCatalogList extends CBitrixComponent
             $element['PREVIEW_PICTURE_SRC'] = CFile::GetPath($element['PREVIEW_PICTURE']);
             $arResult[] = $element;
         }
+//        $entity = \Bitrix\Iblock\Model\Section::compileEntityByIblock($this->arParams['IBLOCK_ID']);
+//        $GG = $entity::GetList([
+//            'select' => ['UF_BREND'],
+//            'filter' => [
+//                "IBLOCK_ID" => $this->arParams['IBLOCK_ID'],
+////                'VALUE_ID' =>$this->arParams['SECTION_ID'],
+//                "ACTIVE" => "Y"],
+//        ])->fetch();
+        debug($arResult);
 
         $this->arResult['ITEMS'] = $arResult;
         $this->arResult['SECTION_INFO'] = $this->getSectionInfo($this->arParams['SECTION_ID'], $this->arParams['IBLOCK_ID']);
