@@ -1,10 +1,8 @@
-<? if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) die();
-IncludeTemplateLangFile(__FILE__);
-?>
+<? if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) die(); ?>
 </div>
 </main>
 <footer class="footer">
-    <div class="footer__wrapper" style="background-image: url(<?=SITE_TEMPLATE_PATH?>/assets/icon/footer/background.png");">
+    <div class="footer__wrapper" style="background-image: url(<?=SITE_TEMPLATE_PATH?>/assets/icon/footer/background.png)">
         <div class="footer__container container1">
             <div class="footer__column">
                 <div class="footer__label">О магазине</div>

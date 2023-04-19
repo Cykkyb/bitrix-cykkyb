@@ -33,15 +33,6 @@ class myCatalogList extends CBitrixComponent
             $element['PREVIEW_PICTURE_SRC'] = CFile::GetPath($element['PREVIEW_PICTURE']);
             $arResult[] = $element;
         }
-//        $entity = \Bitrix\Iblock\Model\Section::compileEntityByIblock($this->arParams['IBLOCK_ID']);
-//        $GG = $entity::GetList([
-//            'select' => ['UF_BREND'],
-//            'filter' => [
-//                "IBLOCK_ID" => $this->arParams['IBLOCK_ID'],
-////                'VALUE_ID' =>$this->arParams['SECTION_ID'],
-//                "ACTIVE" => "Y"],
-//        ])->fetch();
-        debug($arResult);
 
         $this->arResult['ITEMS'] = $arResult;
         $this->arResult['SECTION_INFO'] = $this->getSectionInfo($this->arParams['SECTION_ID'], $this->arParams['IBLOCK_ID']);
